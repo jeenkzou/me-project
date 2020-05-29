@@ -1,0 +1,50 @@
+@import './variable.less';
+
+//生成width
+.create-width(@lt) when (@lt>0) {
+    .width-@{lt} {
+        width: 100% / @lt;
+    }
+
+    .create-width(@lt - 1);
+}
+
+.create-width(10);
+/*
+    .width-10 {
+        width: 10%;
+    }
+    .width-9 {
+        width: 11.11111111%;
+    }
+    ...
+*/
+
+.maxwidth-100 {
+    max-width: 100%;
+}
+
+.max-width {
+    max-width: 1200px;
+    margin   : auto;
+}
+
+//min-height
+.create-height(@lt) when (@lt>0) {
+    .minheight-@{lt} {
+        min-height: @lt * 100px;
+    }
+
+    .create-height(@lt - 1);
+}
+
+.create-height(5);
+/*
+    .minheight-5 {
+        min-height: 500px;
+    }
+    .minheight-4 {
+        min-height: 400px;
+    }
+    ...
+*/

@@ -1,0 +1,132 @@
+//修改浏览器的默认样式为自定义的样式，解决浏览器兼容问题
+@import './variable.less';
+
+//重置所有的块级标签的外边距和内边距
+article,
+aside,
+blockquote,
+body,
+button,
+dd,
+details,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+section,
+td,
+textarea,
+th,
+ul {
+    margin : 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top   : @spacing-base;
+    margin-bottom: @spacing-base;
+}
+
+// 全局使用怪异盒子模型
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+//设置或检索对象的轻按时高亮。
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+// scroll
+.mixin-scroll-bar(@width, @height, @bg: transparent) {
+    width     : @width;
+    height    : @height;
+    background: @bg;
+}
+
+.mixin-scroll-thumb(@radius, @bg: #ccc) {
+    border-radius: @radius;
+    background: @bg;
+}
+
+.create-scroll(@val) when (@val<=4) {
+    .scroll-@{val} {
+        &::-webkit-scrollbar {
+            .mixin-scroll-bar(@val*2px, @val*2px)
+        }
+
+        &::-webkit-scrollbar-thumb {
+            .mixin-scroll-thumb(@val*1px)
+        }
+    }
+
+    .create-scroll(@val+1);
+}
+
+.create-scroll(0);
+
+* {
+    &::-webkit-scrollbar {
+        .mixin-scroll-bar(8px, 8px);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        .mixin-scroll-thumb(4px);
+    }
+}
+
+html{
+    font-size:62.5%;
+}
+
+// body
+body {
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, \\5FAE\8F6F\96C5\9ED1, Arial, sans-serif;
+    font-size  : @font-size-base;
+    height     : 100%;
+    overflow   : auto;
+    color:@text-color-primary;
+    background:@bg-color-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a{
+    text-decoration: none;
+    color:@text-color-primary;
+}

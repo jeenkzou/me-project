@@ -1,0 +1,179 @@
+@import './variable.less';
+
+// 生成主题字体颜色方法
+.create-color(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .color-@{key} {
+        color: @val;
+    }
+
+    .create-color(@lt, @i + 1);
+}
+
+.create-color(@lists);
+/*
+    .color-primary{
+        color:#4897ff;
+    }
+    ...
+*/
+
+// 生成主题背景颜色方法
+.create-bg-color(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .bgcolor-@{key} {
+        background-color: @val;
+        // border:1px solid @val;
+    }
+
+    .create-bg-color(@lt, @i + 1);
+}
+
+.create-bg-color(@lists);
+/*
+    .bgcolor-primary{
+        background-color:#4897ff;
+    }
+    ...
+*/
+
+// 生成主题背景颜色hover方法
+.create-bgcolor-highlight(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .bgcolor-@{key}.highlight {
+        &:hover {
+            background-color: lighten(@val, 10%);
+        }
+
+        &:active {
+            background-color: darken(@val, 10%);
+        }
+    }
+
+    .create-bgcolor-highlight(@lt, @i + 1);
+}
+
+.create-bgcolor-highlight(@lists);
+.bgcolor-inverse.highlight:hover{
+    background-color:#f5f5f5;
+}
+.bgcolor-inverse.highlight:active{
+    background-color:#ddd;
+}
+/*
+    .bgcolor-primary.highlight:hover{
+        background-color:#4887ff;
+    }
+    .bgcolor-primary.highlight:active{
+        background-color:#4966ff;
+    }
+    ...
+*/
+
+
+
+// 生成主题背景渐变颜色方法
+.create-linear-gradient(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .linear-g-@{key} {
+        background: linear-gradient(to right,lighten(saturate(@val,20%),15%) 0%,darken(@val,2.2%) 100%);;
+    }
+
+    .create-linear-gradient(@lt, @i + 1);
+}
+
+.create-linear-gradient(@lists);
+/*
+    .linear-g-primary {
+        background: linear-gradient(0deg, #4394ff 0%, #4d9aff 100%);
+    }
+    ...
+*/
+
+// 生成主题背景渐变高亮颜色方法highlight
+.create-linear-gradient-hl(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .linear-g-@{key}.highlight {
+        position: relative;
+
+        /*&::before{
+            content:'';
+            transition: width .3s ease-in-out;
+            will-change: width;
+            width:0;
+            height:100%;
+            position: absolute;
+            top:0;
+            background:rgba(0,0,0,.3);
+            pointer-events: none;
+        }
+        &::before{
+            left:0;
+        }
+        &::after{
+            right:0;
+        }*/
+        &:hover {
+            background: linear-gradient(to right, lighten(@val, 8%) 0%, darken(@val, 8%) 100%);
+            /*&       ::before{
+                width :50%;
+            }
+            &         ::after{
+                width :50%;
+            }*/
+        }
+
+        &:active {
+            background: linear-gradient(to right, lighten(@val, 2%) 0%, darken(@val, 12%) 100%);
+        }
+    }
+
+    .create-linear-gradient-hl(@lt, @i + 1);
+}
+
+.create-linear-gradient-hl(@lists);
+/*
+    .linear-g-primary.highlight:hover {
+        background: linear-gradient(0deg, #4394ff 0%, #4d9aff 100%);
+    }
+    .linear-g-primary.highlight:active {
+        background: linear-gradient(0deg, #4394ff 0%, #4d9aff 100%);
+    }
+    ...
+*/
+
+
+
+.text-c-pri {
+    color: @text-color-primary;
+}
+
+.text-c-inv {
+    color: @text-color-inverse;
+}
+
+.text-c-sub {
+    color: @text-color-sub;
+}
+
+.text-c-pla {
+    color: @text-color-placeholder;
+}
+
+.text-c-dis {
+    color: @text-color-disable;
+}
+
+.bg-c-pri {
+    background-color: @bg-color-primary;
+
+    &.highlight:hover {
+        background-color: @bg-color-hover;
+    }
+}
+.bg-c-dis{
+    cursor: not-allowed;
+    background: lighten(desaturate(@color-primary, 100%),20%);;
+}
+.bg-c-inv {
+    background-color: @bg-color-inverse;
+}
+
+.bg-c-mas {
+    background-color: @bg-color-mask;
+}

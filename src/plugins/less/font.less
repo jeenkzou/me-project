@@ -1,0 +1,42 @@
+@import './variable.less';
+
+// 生成字体大小方法
+.create-font-size(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@fonts, @i)) when (length(@lt)>=@i) {
+    .font-s-@{key} {
+        font-size: @val;
+    }
+
+    .create-font-size(@lt, @i + 1);
+}
+
+.create-font-size(@size);
+/*
+    .font-s-xs{
+       font-size:10px;
+    }
+    ...
+*/
+
+.font-f-ht {
+    font-family: '黑体';
+}
+
+.font-f-yh {
+    font-family: '微软雅黑';
+}
+
+.font-f-st {
+    font-family: '宋体';
+}
+
+.font-w-nor {
+    font-weight: normal;
+}
+
+.font-w-bol {
+    font-weight: bold;
+}
+
+.font-w-300 {
+    font-weight: 300;
+}

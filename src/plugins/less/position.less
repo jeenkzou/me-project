@@ -1,0 +1,129 @@
+@import './variable.less';
+
+@posKey  : r, c, l, jus;
+@posValue: right, center, left, justify;
+
+//生成text-align
+.create-text-align(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@posValue, @i)) when (length(@lt)>=@i) {
+    .text-a-@{key} {
+        text-align: @val;
+    }
+
+    .create-text-align(@lt, @i + 1);
+}
+
+.create-text-align(@posKey);
+/*
+    .text-a-r{
+        text-align:right;
+    }
+    ...
+*/
+
+//====================display
+.display-inline {
+    display: inline;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.display-none {
+    display: none;
+}
+
+//====================position
+.position-relative {
+    position: relative;
+}
+
+//===================float
+.float-l {
+    float: left;
+}
+
+.float-r {
+    float: right;
+}
+
+.float-both {
+    float: both;
+}
+
+.resolve-float::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+//===================flex
+.flex-d-col {
+    .display-flex;
+    flex-direction: column;
+}
+
+.flex-j-aro {
+    .display-flex;
+    justify-content: space-around;
+}
+
+.flex-j-c {
+    .display-flex;
+    justify-content: center;
+}
+
+.flex-j-bet {
+    .display-flex;
+    justify-content: space-between;
+}
+
+.flex-a-c {
+    .display-flex;
+    align-items: center;
+}
+
+.flex-c {
+    .display-flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+//生成flex
+.create-flex-pixel(@lt) when (@lt>=0) {
+    .flex-@{lt} {
+        flex: @lt;
+    }
+
+    .create-flex-pixel(@lt - 1);
+}
+.create-flex-pixel(5);
+
+// 溢出隐藏
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 自动生成换行省略
+.create-clamp(@clamp) when (@clamp<5){
+    .clamp-@{clamp}{
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+        display           : -webkit-box;
+        display           : -moz-box;
+        /*! autoprefixer  :off */
+        -webkit-box-orient: vertical;
+        -moz-box-orient   : vertical;
+        /* autoprefixer   :on */
+        -webkit-line-clamp: @clamp;
+        -moz-line-clamp   : @clamp;
+    }
+    .create-clamp(@clamp+1)
+}
+.create-clamp(2);

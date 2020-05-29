@@ -1,0 +1,62 @@
+/* 行为相关颜色 */
+@color-primary: /*#DB43B2;//*/#4897ff;//主题色
+@color-success: #4cd964;//成功提示颜色
+@color-info   : #2db7f5;//通知颜色
+@color-warning: #f0ad4e;//警告颜色
+@color-error  : #dd524d;//错误颜色
+@color-inverse: #fff;//背景反色
+
+// 定义列表，方便循环遍历
+@lists : primary, success, info, warning, error, inverse; //颜色列表keys
+@colors: @color-primary, @color-success, @color-info, @color-warning, @color-error, @color-inverse; //颜色变量values
+
+/* 文字基本颜色 */
+@text-color-primary    : #333; //基本色
+@text-color-inverse    : contrast(@text-color-primary);//#fff; //反色
+@text-color-sub        : #999; //辅助灰色，如加载更多的提示信息
+@text-color-placeholder: #ccc; //占位颜色
+@text-color-disable    : #ccc; //禁用颜色
+
+/* 背景颜色 */
+@bg-color-primary: /*contrast(@text-color-primary);*/#f8f8f8;//背景主题色
+@bg-color-inverse: #ffffff;//背景反色
+@bg-color-disable: /*lighten(desaturate(@color-primary, 100%),20%);*/#f3f3f3;//背景禁用色
+
+@bg-color-hover  : #e8e8e8; //点击状态颜色
+@bg-color-mask   : rgba(0, 0, 0, .5); //遮罩颜色
+
+/* 边框颜色 */
+@border-color: #c8c7cc;
+
+
+/* 文字尺寸 */
+@font-size-base: 14px;
+@font-size-xs  : @font-size-base - 4px;
+@font-size-sm  : @font-size-base - 2px;
+@font-size-lg  : @font-size-base + 2px;
+@font-size-xl  : @font-size-base + 4px;
+
+
+/* 圆角尺寸 */
+@border-radius-base: 5px;
+@border-radius-xs  : @border-radius-base - 3px;
+@border-radius-sm  : @border-radius-base - 2px;
+@border-radius-lg  : @border-radius-base + 3px;
+@border-radius-xl  : @border-radius-base + 5px;
+
+/* 间距 */
+@spacing-base: 20px;
+@spacing-xs  : @spacing-base - 15px;
+@spacing-sm  : @spacing-base - 10px;
+@spacing-lg  : @spacing-base + 10px;
+@spacing-xl  : @spacing-base + 20px;
+
+
+/* 透明度 */
+@opacity-disabled: 0.3; // 组件禁用态的透明度
+
+// 定义列表，方便循环遍历
+@size  : xs, sm, base, lg, xl;//尺寸的keys
+@fonts : @font-size-xs, @font-size-sm, @font-size-base, @font-size-lg, @font-size-xl;//字体大小的values
+@radius: @border-radius-xs, @border-radius-sm, @border-radius-base, @border-radius-lg, @border-radius-xl;//圆角的values
+@spacings: @spacing-xs, @spacing-sm, @spacing-base, @spacing-lg, @spacing-xl;//间距的values

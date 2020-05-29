@@ -1,0 +1,97 @@
+// *********vue transition***********
+// ***scale***
+.scale-enter,
+.scale-leave-to{
+  transform: scale(.5);
+  opacity: .5;
+}
+.scale-enter-active,
+.scale-leave-active{
+  transition: all .3s ease-in-out;
+}
+
+// ***router-fade***
+.router-enter{
+  opacity: 0;
+}
+.router-enter-active{
+  transition: all .5s ease-in-out;
+}
+// ***fade***
+.fade-enter,
+.fade-leave-to{
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active{
+  transition: all .5s ease-in-out;
+}
+// ***opacity***
+.opacity-enter,.faopacityde-leave-to{
+  opacity: 0;
+}
+.opacity-enter-active,.opacity-leave-active{
+  transition: all .3s ease-in-out;
+}
+// ***shake***
+.shake-leave-to{
+  opacity: 0;
+}
+.shake-enter-active{
+  animation: shake .3s ease-in-out;
+}
+.shake-leave-active{
+  transition: transform .3s ease-in-out;
+}
+@keyframes shake{
+  0%,100%{
+    transform: translateX(0px);
+  }
+  20%,60%{
+    transform: translateX(10px);
+  }
+  40%,80%{
+    transform: translateX(-10px);
+  }
+}
+// ***bounce***
+.bounce-leave-to{
+  opacity: 0;
+}
+.bounce-enter-active{
+  animation: bounce 1s ease-in-out;
+}
+.bounce-leave-active{
+  transition: all .3s ease-in-out;
+}
+@keyframes bounce{
+  0%{transform: translatey(-30px);}
+  10%,30%,50%{transform: translatey(-10px);}
+  40%{transform: translatey(-20px);}
+  70%,90%{transform: translatey(-5px);}
+  80%{transform: translatey(-10px);}
+  20%,60%,100%{transform: translateY(0px);}
+}
+
+// transition-group 数据切换效果
+.flip-list-move {
+  transition: transform 1s;
+}
+.flash{
+  animation: flash 2.6s;
+}
+@keyframes flash{
+  from{
+    transform: translateY(-10px);
+  }
+  15%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  30%,60%,95%{
+    opacity: 0;
+  }
+  45%,75%,to{
+    opacity: 1;
+  }
+}

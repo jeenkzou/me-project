@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <title>Example</title>
+    <link rel="stylesheet" type="text/css" href="./src/less/main.css" />
+  </head>
+  <body class='padding-base'>
+    <div id="app">
+      <h2>按钮</h2>
+      <div class="padding-l-base">
+        <h3>行为颜色</h3>
+        <div class="padding-l-base">
+          <button class='bgcolor-primary highlight me-button'>primary</button>
+          <button class='bgcolor-success highlight me-button'>success</button>
+          <button class='bgcolor-info highlight me-button'>info</button>
+          <button class='bgcolor-warning highlight me-button'>warning</button>
+          <button class='bgcolor-error highlight me-button'>error</button>
+        </div>
+        <h3>行为颜色渐变</h3>
+        <div class="padding-l-base">
+          <button class='linear-g-primary highlight me-button'>primary</button>
+          <button class='linear-g-success highlight me-button'>success</button>
+          <button class='linear-g-info highlight me-button'>info</button>
+          <button class='linear-g-warning highlight me-button'>warning</button>
+          <button class='linear-g-error highlight me-button'>error</button>
+        </div>
+        <h3>不同尺寸</h3>
+        <div class="padding-l-base">
+          <button class='linear-g-primary highlight me-button small'>小28px</button>
+          <button class='linear-g-primary highlight me-button'>默认34px</button>
+          <button class='linear-g-primary highlight me-button large'>大40px</button>
+        </div>
+        <h3>镂空</h3>
+        <div class="padding-l-base">
+          <button class='me-button bgcolor-inverse highlight color-primary border-primary'>primary</button>
+          <button class='me-button bgcolor-inverse highlight color-success border-success'>success</button>
+          <button class='me-button bgcolor-inverse highlight color-info border-info'>info</button>
+          <button class='me-button bgcolor-inverse highlight color-warning border-warning'>warning</button>
+          <button class='me-button bgcolor-inverse highlight color-error border-error'>error</button>
+          <button class='me-button bgcolor-inverse highlight text-c-pri border-base'>inverse</button>
+        </div>
+      </div>
+      <h2>表单</h2>
+      <div class="padding-l-base">
+        <h3>input</h3>
+        <p class='padding-l-base'>
+          <input class='me-input small' placeholder='small  28px' />
+          <input class='me-input' placeholder='normal  34px' />
+          <input class='me-input large' placeholder='large  40px' />
+          <input class='me-input' disabled value='我被禁用了' />
+        </p>
+        <h3>textarea</h3>
+        <p class='padding-l-base'>
+          <textarea class='me-textarea noresize minheight-1 width-3' placeholder='textarea'></textarea>
+          <textarea class='me-textarea noresize minheight-1 width-3' disabled placeholder='我被禁用了'></textarea>
+        </p>
+        <h3>表单组件</h3>
+        <div class="me-form-wrapper padding-l-base">
+          <p class="form-item">
+            <span class="form-item-label required">姓名</span>
+            <input type="text" class="me-input width-3" placeholder="请输入姓名">
+          </p>
+          <p class="form-item">
+            <span class="form-item-label required">年龄</span>
+            <input type="text" class="me-input width-3" placeholder="请输入年龄">
+          </p>
+          <p class="form-item" style='align-items: flex-start;'>
+            <span class="form-item-label">个人介绍</span>
+            <textarea class='me-textarea noresize minheight-1 width-3' placeholder='请输入个人介绍'></textarea>
+          </p>
+
+        </div>
+      </div>
+      <div>
+        <h2>组件</h2>
+        <div class="padding-l-base">
+          <h3>Tabs</h3>
+          <ul class='me-tabs padding-l-base'>
+            <li class='me-tabs-item active'>tab1</li>
+            <li class='me-tabs-item'>tab2</li>
+            <li class='me-tabs-item'>tab3</li>
+            <li class='me-tabs-item'>tab4</li>
+            <li class='me-tabs-item'>tab5</li>
+          </ul>
+          <h3>导航</h3>
+          <div class="padding-l-base">
+            <p class="me-title label">
+              <span class="name">我是标题</span>
+            </p>
+            <p class="me-title background">
+              <span class="name">我是标题</span>
+            </p>
+          </div>
+          <h3>卡片</h3>
+          <div class="padding-l-base">
+            <div class="me-card">
+              <p class="head">我是标题</p>
+              <p class="body minheight-1">我是内容</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

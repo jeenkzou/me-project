@@ -1,0 +1,97 @@
+
+
+// ******h1-h6
+.mixin-h(@font, @align: left) {
+  font-size : @font;
+  text-align: @align;
+  color     : #333;
+}
+
+// ******height
+.mixin-height(@height) {
+  height     : @height;
+  line-height: @height;
+}
+
+// *****radius
+.mixin-radius (@br: @border-radius-base) {
+  //简单的圆角
+  -webkit-border-radius: @br;
+  -moz-border-radius   : @br;
+  border-radius        : @br;
+}
+
+// *****input
+.mixin-input(@height: 40px,
+  @width: 280px,
+  @pl: 15px,
+  @bg: #fff,
+  @border-radius-base: @border-radius-base,
+  @border-color: #ccc,
+  @color: #000) {
+  .mixin-radius(@border-radius-base);
+  border      : 1px solid @border-color;
+  height      : @height;
+  width       : @width;
+  padding-left: @pl;
+  background  : @bg;
+  outline     : none;
+  color       : @color;
+
+  &:focus {
+    border-color: @color-primary;
+  }
+
+  &:disabled {
+    background: #f6f6f6;
+    color     : #999;
+    cursor    : not-allowed;
+  }
+}
+
+// ****button
+.mixin-button(@pad: 7px 15px,
+  @color: #fff,
+  @border-radius-base: @border-radius-base,
+  @tipColor: #2897FF,
+  @background: #2897FF,
+  @mr: 20px,
+) {
+  .mixin-radius(@border-radius-base);
+  display   : inline-block;
+  border    : none;
+  padding   : @pad;
+  background: @background;
+  color     : @color;
+  outline   : none;
+  font-size : 1.6rem;
+  cursor    : pointer;
+
+  &:hover {
+    background: lighten(@tipColor, 8%);
+  }
+
+  &:active {
+    background: darken(@tipColor, 8%);
+  }
+
+  &:disabled {
+    background: lighten(@tipColor, 16%);
+    cursor    : not-allowed;
+    color     : @grey-sep;
+  }
+}
+
+// *****clamp
+.mixin-clamp(@clamp) {
+  overflow          : hidden;
+  text-overflow     : ellipsis;
+  display           : -webkit-box;
+  display           : -moz-box;
+  /*! autoprefixer  :off */
+  -webkit-box-orient: vertical;
+  -moz-box-orient   : vertical;
+  /* autoprefixer   :on */
+  -webkit-line-clamp: @clamp;
+  -moz-line-clamp   : @clamp;
+}

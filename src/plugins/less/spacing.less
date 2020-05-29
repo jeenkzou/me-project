@@ -1,0 +1,174 @@
+@import './variable.less';
+
+//padding==================
+// 生成间距方法
+.create-padding(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-@{key} {
+        padding: @val;
+    }
+
+    .create-padding(@lt, @i + 1);
+}
+
+.create-padding(@size);
+/*
+    .padding-xs{
+        padding:5px;
+    }
+    ...
+*/
+
+// 生成上下间距方法
+.create-padding-tb(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-tb-@{key} {
+        padding-top   : @val;
+        padding-bottom: @val;
+    }
+
+    .create-padding-tb(@lt, @i + 1);
+}
+
+.create-padding-tb(@size);
+
+
+// 生成左右间距方法
+.create-padding-lr(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-lr-@{key} {
+        padding-left : @val;
+        padding-right: @val;
+    }
+
+    .create-padding-lr(@lt, @i + 1);
+}
+
+.create-padding-lr(@size);
+
+// 生成上间距方法
+.create-padding-top(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-t-@{key} {
+        padding-top: @val;
+    }
+
+    .create-padding-top(@lt, @i + 1);
+}
+
+.create-padding-top(@size);
+
+// 生成右间距方法
+.create-padding-right(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-r-@{key} {
+        padding-right: @val;
+    }
+
+    .create-padding-right(@lt, @i + 1);
+}
+
+.create-padding-right(@size);
+
+// 生成下间距方法
+.create-padding-bottom(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-b-@{key} {
+        padding-bottom: @val;
+    }
+
+    .create-padding-bottom(@lt, @i + 1);
+}
+
+.create-padding-bottom(@size);
+
+// 生成左间距方法
+.create-padding-left(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .padding-l-@{key} {
+        padding-left: @val;
+    }
+
+    .create-padding-left(@lt, @i + 1);
+}
+
+.create-padding-left(@size);
+
+//margin====================
+// 生成间距方法
+.create-margin(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-@{key} {
+        margin: @val;
+    }
+
+    .create-margin(@lt, @i + 1);
+}
+
+.create-margin(@size);
+
+// 生成上下间距方法
+.create-margin-tb(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-tb-@{key} {
+        margin-top   : @val;
+        margin-bottom: @val;
+    }
+
+    .create-margin-tb(@lt, @i + 1);
+}
+
+.create-margin-tb(@size);
+
+
+// 生成左右间距方法
+.create-margin-lr(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-lr-@{key} {
+        margin-left : @val;
+        margin-right: @val;
+    }
+
+    .create-margin-lr(@lt, @i + 1);
+}
+
+.create-margin-lr(@size);
+
+// 生成上间距方法
+.create-margin-top(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-t-@{key} {
+        margin-top: @val;
+    }
+
+    .create-margin-top(@lt, @i + 1);
+}
+
+.create-margin-top(@size);
+
+// 生成右间距方法
+.create-margin-right(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-r-@{key} {
+        margin-right: @val;
+    }
+
+    .create-margin-right(@lt, @i + 1);
+}
+
+.create-margin-right(@size);
+
+// 生成下间距方法
+.create-margin-bottom(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-b-@{key} {
+        margin-bottom: @val;
+    }
+
+    .create-margin-bottom(@lt, @i + 1);
+}
+
+.create-margin-bottom(@size);
+
+// 生成左间距方法
+.create-margin-left(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@spacings, @i)) when (length(@lt)>=@i) {
+    .margin-l-@{key} {
+        margin-left: @val;
+    }
+
+    .create-margin-left(@lt, @i + 1);
+}
+
+.create-margin-left(@size);
+
+.resolve-margin:before{
+    content:"";
+    display:table;
+}

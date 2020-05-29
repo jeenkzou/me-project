@@ -1,0 +1,140 @@
+// 表单的一些常用样式，包括input，textarea，button等
+@import './variable.less';
+
+// ********************pleceholder****************
+input::placeholder,
+textarea::placeholder {
+    color: @text-color-placeholder;
+}
+
+/* *********修改表单数据为number时的上下箭头消失************* */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+}
+
+/* 让number表单只能输入数字，不能输e和. */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+// *******解决谷歌的input自动填充样式
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+}
+
+//********textarea********** 
+textarea.noresize {
+    resize: none !important;
+}
+
+
+@heights: 28px, 34px, 40px; //表单的小中大高度尺寸
+
+.me-input-textarea {
+    width:100%;
+    font-family   : initial;
+    vertical-align: middle;
+    border        : 1px solid @border-color;
+    outline       : none;
+    color         : @text-color-primary;
+    border-radius : @border-radius-base;
+
+    &:focus,
+    &:hover {
+        border-color: @color-primary;
+    }
+
+    &:disabled {
+        background  : @bg-color-disable;
+        color       : @text-color-disable;
+        border-color: @border-color;
+        cursor      : not-allowed;
+    }
+}
+
+.me-input {
+    .me-input-textarea;
+    padding: 0 15px;
+    height : extract(@heights, 2);
+
+    &.small {
+        height: extract(@heights, 1);
+    }
+
+    &.large {
+        height   : extract(@heights, 3);
+        font-size: @font-size-lg;
+    }
+}
+
+.me-textarea {
+    .me-input-textarea;
+    width       : 100%;
+    padding-left: 15px;
+    padding-top : 10px;
+}
+
+.me-button {
+    display       : inline-block;
+    cursor        : pointer;
+    padding       : 0 15px;
+    vertical-align: middle;
+    outline       : none;
+    height        : extract(@heights, 2);
+    line-height   : 1.5;
+    border        : none;
+    white-space   : nowrap;
+    user-select   : none;
+    border-radius : @border-radius-base;
+    color         : @text-color-inverse;
+
+    &.small {
+        padding: 0 7px;
+        height : extract(@heights, 1);
+    }
+
+    &.large {
+        height   : extract(@heights, 3);
+        font-size: @font-size-lg;
+    }
+}
+
+// =======valid表单验证样式
+.me-form-wrapper {
+    margin: 20px auto;
+
+    .form-item {
+        position     : relative;
+        display      : flex;
+        align-items  : center;
+        margin-bottom: 20px;
+
+        &-label {
+            width         : 70px;
+            color         : #333;
+            vertical-align: middle;
+            text-align    : left;
+            margin-right  : 10px;
+
+            &.required::before {
+                content     : '*';
+                color       : @color-error;
+                display     : inline-block;
+                margin-right: 5px;
+            }
+        }
+
+        &-input {
+            position: relative;
+        }
+
+        &-error {
+            // display: none;
+            position: absolute;
+            bottom  : -20px;
+            left    : 0;
+            color   : @color-error;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+@import './variable.less';
+
+// 生成字体大小方法
+.create-border-radius(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@radius, @i)) when (length(@lt)>=@i) {
+    .border-r-@{key} {
+        border-radius: @val;
+    }
+
+    .create-border-radius(@lt, @i + 1);
+}
+
+.create-border-radius(@size);
+/*
+    .border-r-xs{
+        border-radius:2px;
+    }
+    ...
+*/
+
+.border-r-cir {
+    border-radius: 50%;
+}
+
+.border-base {
+    border: 1px solid @border-color;
+}
+
+.border-t {
+    border-top: 1px solid @border-color;
+}
+
+.border-b {
+    border-bottom: 1px solid @border-color;
+}
+
+.border-l {
+    border-left: 1px solid @border-color;
+}
+
+.border-r {
+    border-right: 1px solid @border-color;
+}
+
+.box-shadow {
+    box-shadow: 0 1px 5px 0 rgba(99, 99, 99, 0.2);
+}
+
+// 生成字体大小方法
+.create-border(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
+    .border-@{key} {
+        border: 1px solid @val;
+    }
+
+    .create-border(@lt, @i + 1);
+}
+
+.create-border(@lists);
+/*
+    .border-primary{
+       border:1px solid #4897ff;
+    }
+    ...
+*/

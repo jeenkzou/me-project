@@ -1,0 +1,30 @@
+@import './variable.less';
+//顺序影响样式的覆盖，建议将需要被替代的放在最前方
+@import './reset.less';
+@import './form.less';
+@import './transition.less';
+
+@import './position.less';
+@import './size.less';
+@import './color.less';
+@import './font.less';
+@import './spacing.less';
+@import './border.less';
+
+@import './icon.less';
+
+
+.me-hand{
+  cursor: pointer;
+}
+.me-a{
+  cursor: pointer;
+  &:hover{
+      text-decoration: underline;
+      color:@color-primary;
+  }
+}
+.me-loading{
+  opacity: 0.8;
+  cursor: wait;
+}

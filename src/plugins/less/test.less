@@ -1,0 +1,46 @@
+	//主题色的颜色变量配置red
+	@redColor:#d6352e;//主题色
+	@redAtColor:darken(rgba(214,53,46,1),8%);//高亮色
+	@redGFrom:#d0260b;//渐变色开始颜色
+	@redGTo:#f57687;//渐变色结束颜色
+	@redAtGFrom: #d0080b;//渐变色高亮开始颜色
+	@redAtGTo:#f55887;//渐变色高亮结束颜色
+
+	//其他按钮颜色配置==============
+		//橙色orange
+		@orangeColor:rgba(230,192,151,1);//默认橙色
+		@orangeAtColor:darken(rgba(230,192,151,1),8%);//橙色高亮
+		@orangeGFrom:rgba(198,161,120,1);//渐变色开始颜色
+		@orangeGTo:rgba(230,192,151,1);//渐变色结束颜色
+		@orangeAtGFrom:rgba(198,111,120,1);//渐变色高亮开始颜色
+		@orangeAtGTo:rgba(230,162,151,1);//渐变色高亮结束颜色
+
+	@orangeDarkColor:#1b6ef0;
+    @redDarkColor:red;
+    
+    .color-red{
+        background:darken(@redColor,10%);
+    }
+    .color-red-real{
+        background:@redDarkColor;
+    }
+    .bgcolor-red{
+        color:#fff;
+        background:linear-gradient(to right,lighten(saturate(@redColor,18%),22%) 0%,darken(@redColor,2.2%) 100%);
+    }
+    .bgcolor-red-real{
+        background:linear-gradient(to right,@redGTo 0%,@redGFrom 100%);
+    }
+    .color-orange{
+        color:darken(@orangeColor,10%);
+    }
+    .color-orange-real{
+        color:@orangeDarkColor;
+    }
+    .bgcolor-orange{
+        color:#fff;
+        background:linear-gradient(to right,lighten(@orangeColor,3%) 0%,darken(@orangeColor,10%) 100%);
+    }
+    .bgcolor-orange-real{
+        background:linear-gradient(to right,@orangeGTo 0%,@orangeGFrom,100%);
+    }
