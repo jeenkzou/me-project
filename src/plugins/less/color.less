@@ -72,7 +72,7 @@
 // 生成主题背景渐变颜色方法
 .create-linear-gradient(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
     .linear-g-@{key} {
-        background: linear-gradient(to right,lighten(saturate(@val,20%),15%) 0%,darken(@val,2.2%) 100%);;
+        background: linear-gradient(to bottom,lighten(saturate(@val,20%),15%) 0%,darken(@val,2.2%) 100%);;
     }
 
     .create-linear-gradient(@lt, @i + 1);
@@ -109,7 +109,7 @@
             right:0;
         }*/
         &:hover {
-            background: linear-gradient(to right, lighten(@val, 8%) 0%, darken(@val, 8%) 100%);
+            background: linear-gradient(to bottom, lighten(@val, 8%) 0%, darken(@val, 8%) 100%);
             /*&       ::before{
                 width :50%;
             }
@@ -119,7 +119,7 @@
         }
 
         &:active {
-            background: linear-gradient(to right, lighten(@val, 2%) 0%, darken(@val, 12%) 100%);
+            background: linear-gradient(to bottom, lighten(@val, 2%) 0%, darken(@val, 12%) 100%);
         }
     }
 
