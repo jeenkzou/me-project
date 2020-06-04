@@ -26,7 +26,7 @@ export default {
     overflow     : hidden;
 
     &:hover {
-      box-shadow: 0 1px 5px 0 rgba(99, 99, 99, 0.2);
+      box-shadow: @shadow;
     }
 
     .head {

@@ -32,7 +32,7 @@ export default {
   name: 'meRadio',
   data () {
     return {
-      selectedValue: ''
+      selectedValue: this.value
     }
   },
   props: {
@@ -68,8 +68,11 @@ export default {
     selectedValue () {
       this.$emit('input', this.selectedValue)
     },
-    value(nv){
-      this.selectedValue = nv
+    value:{
+      handler:function(nv){
+        this.selectedValue = nv
+      },
+      immediate:true
     }
   }
 }

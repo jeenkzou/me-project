@@ -10,9 +10,9 @@
 -->
 <template>
   <transition name='fade'>
-      <div class="modal-box" v-show='show' id='my_modal_box'>
+      <div class="modal-wrapper" v-show='show' id='my_modal_box'>
         <transition name='scale'>
-          <div class='modal-body' v-show='show'>
+          <div :class='[classDom]' v-show='show'>
             <span class='mouse-move' @mousedown="handleMouseDown" :title='dragtitle'></span>
             <span class='modal-close' @click='choose(false,0)' v-show='close'>
               <i class="meiconfont meicon-guanbi"></i>
@@ -36,6 +36,7 @@
 </template>
   
   <script>
+  import {handleDrag,recoverTransform,isZh,getType,isObject} from '../../utils/functions';
   export default{
     data(){
       return {
@@ -47,90 +48,34 @@
         cancelButtonText:'',//取消按钮名称
         confirmButtonText:'',//确定按钮名称
         callback:null, //按钮点击回调函数
-        dragtitle:''
+        dragtitle:'',
+        classDom:'modal-body'
       }
     },
     methods: {
       // 处理拖动事件
       handleMouseDown(e){
-        let bodyDom = document.querySelector('.modal-body')
-        let pageX = 0
-        let pageY = 0
-        let transformX = 0
-        let transformY = 0
-        let canMove = false
-        let transform = /\(.*\)/.exec(bodyDom.style.transform)
-        if (transform) {
-          transform = transform[0].slice(1, transform[0].length - 1)
-          let splitxy = transform.split('px, ')
-          transformX = parseFloat(splitxy[0])
-          transformY = parseFloat(splitxy[1].split('px')[0])
-        }
-        pageX = e.pageX
-        pageY = e.pageY
-        canMove = true
-        const handleMousemove = e => {
-          let xOffset = e.pageX - pageX + transformX
-          let yOffset = e.pageY - pageY + transformY
-          // if (canMove) bodyDom.style.transform = `translate(${xOffset}px, ${yOffset}px)`
-          if(canMove){
-            let ol = bodyDom.offsetLeft
-            let ot = bodyDom.offsetTop
-            let absx = Math.abs(xOffset)
-            let absy = Math.abs(yOffset)
-            if(ol>absx){
-              if(ot>absy){
-                bodyDom.style.transform = `translate(${xOffset}px, ${yOffset}px)`
-              }else{
-                ot = yOffset>0?ot:-ot
-                bodyDom.style.transform = `translate(${xOffset}px, ${ot}px)`
-              }
-            }else{
-              ol = xOffset>0?ol:-ol
-              if(ot>absy){
-                bodyDom.style.transform = `translate(${ol}px, ${yOffset}px)`
-              }else{
-                ot = yOffset>0?ot:-ot
-                bodyDom.style.transform = `translate(${ol}px, ${ot}px)`
-              }
-            }
-          }
-        }
-        const handleMouseup = e => {
-          canMove = false
-        }
-        document.onmousemove = handleMousemove
-        document.onmouseup = handleMouseup
-      },
-      recoverTransform(){
-        setTimeout(() => {
-          let bodyDom = document.querySelector('.modal-body')
-          bodyDom.style.transform = ''
-        }, 500);
-      },
-      // 判断中英文
-      isZh(){
-        return true
+        handleDrag(e,'.'+this.classDom);
       },
       showModal(opts){
         if(!opts){
           throw new ReferenceError('params of modal component is required')
         }
-        if(typeof opts !== 'object'){
+        if(!isObject(opts)){
           throw new TypeError('params of modal component must be Object')
         }
         let {type,title,subtitle,cancelButtonText,confirmButtonText,callback,close} = opts
         if(!title){
           throw new ReferenceError('title of modal component is required')
         }
-        if(!callback && typeof callback !=='function'){
+        if(getType(callback)!='function'){
           throw new Error('callback must be required and accept a function')
         }
         this.title = title;
         this.subtitle = subtitle;
-        this.cancelButtonText = cancelButtonText || (this.isZh()?'取消':'Cancel');
-        this.confirmButtonText = confirmButtonText || (this.isZh()?'确定':'Confirm');
-        this.dragtitle = this.isZh()?'点击进行拖动':'Drag and Move';
+        this.cancelButtonText = cancelButtonText || (isZh()?'取消':'Cancel');
+        this.confirmButtonText = confirmButtonText || (isZh()?'确定':'Confirm');
+        this.dragtitle = isZh()?'点击进行拖动':'Drag and Move';
         this.show = true;
         this.type = type || 'confirm';
         this.close = close || true;
@@ -143,7 +88,7 @@
       },
       // 仅关闭
       closeModal(bool){
-        this.recoverTransform();
+        recoverTransform('.'+this.classDom);
         this.show = false;
         if(bool){
           this.callback = null;
@@ -154,7 +99,7 @@
   </script>
   
   <style lang='less' scoped>
-    .modal-box{
+    .modal-wrapper{
       width:100%;
       height:100%;
       overflow: hidden;
@@ -165,7 +110,7 @@
       will-change: opacity;
       transition: opacity .3s linear;
     }
-    .modal-box>.modal-body{
+    .modal-wrapper>.modal-body{
       width:400px;
       // height:227px;
       position: absolute;
@@ -199,18 +144,18 @@
     // .modal-close:hover>i{
     //   color:#fff;
     // }
-    .modal-box>.modal-body>.modal-message{
+    .modal-wrapper>.modal-body>.modal-message{
       margin-top:20px;
       margin-bottom: 40px;
       text-align: center;
       position: relative;
     }
-    .modal-box>.modal-body>.modal-message>p{
+    .modal-wrapper>.modal-body>.modal-message>p{
       display: block;
       text-align: center;
       margin-bottom: 20px;
     }
-    .modal-box .modal-message>p>span{
+    .modal-wrapper .modal-message>p>span{
       display: inline-block;
     }
     .modal-body>.modal-message>.title>span{
@@ -230,11 +175,11 @@
       // white-space: wrap;
       word-break: break-all;
     }
-    .modal-box>.modal-body>.operate{
+    .modal-wrapper>.modal-body>.operate{
       text-align:center;
       margin-bottom: 20px;
     }
-    .modal-box>.modal-body>.operate>.ydy-btn{
+    .modal-wrapper>.modal-body>.operate>.ydy-btn{
       padding:0;
       height: 34px;
       line-height: 34px;

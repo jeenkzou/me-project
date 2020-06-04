@@ -27,10 +27,11 @@
   transition: all .5s ease-in-out;
 }
 // ***opacity***
-.opacity-enter,.faopacityde-leave-to{
+.opacity-enter,.opacity-leave-to{
   opacity: 0;
 }
-.opacity-enter-active,.opacity-leave-active{
+.opacity-enter-active,
+.opacity-leave-active{
   transition: all .3s ease-in-out;
 }
 // ***shake***
@@ -41,7 +42,7 @@
   animation: shake .3s ease-in-out;
 }
 .shake-leave-active{
-  transition: transform .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 @keyframes shake{
   0%,100%{

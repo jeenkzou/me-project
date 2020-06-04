@@ -80,11 +80,11 @@
           <h3>Caption</h3>
           <div class="padding-l-base">
             <me-caption title-name='我是标题'></me-caption>
-            <div class='margin-b-base margin-t-sm bg-c-inv padding-base minheight-2 box-shadow'>
+            <div class='margin-b-base margin-t-sm bg-c-inv padding-base minheight-2 pop-shadow'>
               我是标题下的一些内容
             </div>
             <me-caption title-name='我是标题' type='background'></me-caption>
-            <div class='margin-tb-base bg-c-inv padding-base minheight-2 box-shadow'>
+            <div class='margin-tb-base bg-c-inv padding-base minheight-2 circle-square'>
               我是标题下的一些内容
             </div>
           </div>
@@ -97,7 +97,7 @@
           <h3>Steps</h3>
           <div class="padding-l-base">
             <me-steps :data='steps' :current='stepActive' class='margin-b-base'></me-steps>
-            <me-button @click='nextStep'>下一步</me-button>
+            <me-button @click='nextStep' color='success'>下一步</me-button>
           </div>
           <h3>Page</h3>
           <div class="padding-l-base">
@@ -139,6 +139,10 @@
           <h3>Modal</h3>
           <div class="padding-l-base">
             <me-button class='margin-r-base' @click="modal(1)">打开对话框</me-button>
+          </div>
+          <h3>Message</h3>
+          <div class="padding-l-base">
+            <me-button class='margin-r-base' @click="message(1)">打开消息框</me-button>
           </div>
           <h3>检查电脑端还是移动端</h3>
           <div class="padding-l-base">
@@ -210,9 +214,9 @@ export default {
       ],
       tabActive:0,
       steps:[
-        {name:'step1'},
+        {name:'step11111'},
         {name:'step2'},
-        {name:'step3'},
+        {name:'step322222'},
         {name:'step4'},
         {name:'step5'},
       ],
@@ -226,7 +230,7 @@ export default {
         {value:'0',label:'女'},
         {value:'2',label:'禁用',disabled:true},
       ],
-      sexDis:'',
+      sexDis:'1',
       sexsStr:['男','女','保密'],
       sexStr:'',
       pageMap:{
@@ -282,6 +286,11 @@ export default {
     },
     toast(icon){
       this.$toast[icon]('状态：'+icon)
+    },
+    message(){
+      this.$message.show({
+        messages:['xxxxx','code:1111']
+      })
     },
     modal(tag){
       switch(tag){

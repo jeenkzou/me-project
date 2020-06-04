@@ -5,8 +5,6 @@ import store from './store';
 
 import './plugins/less/main.less';
 
-import './plugins/less/test.less';
-
 import mePlugin from './plugins/utils';
 
 Vue.use(mePlugin);

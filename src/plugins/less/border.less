@@ -41,9 +41,6 @@
     border-right: 1px solid @border-color;
 }
 
-.box-shadow {
-    box-shadow: 0 1px 5px 0 rgba(99, 99, 99, 0.2);
-}
 
 // 生成字体大小方法
 .create-border(@lt, @i: 1, @key: extract(@lt, @i), @val: extract(@colors, @i)) when (length(@lt)>=@i) {
@@ -61,3 +58,49 @@
     }
     ...
 */
+//虚线效果,css自带的border-style属性 dotted/ dashed . 效果展示出来太密了，并不符合UI设计
+.dotted-line{
+    border: 1px dashed transparent;
+    background: linear-gradient(white,white) padding-box, repeating-linear-gradient(-45deg,@border-color 0, @border-color .25em,white 0,white .75em);
+}
+
+
+//普通阴影
+.box-shadow {
+    // box-shadow: @shadow;
+    filter: drop-shadow(@shadow);
+}
+// 缺圆投影
+.circle-square{
+    background: radial-gradient(circle at bottom right, transparent 20px, #fff 15px);
+    filter: drop-shadow(@shadow);
+}
+// 气泡阴影
+.pop-shadow {
+    // border: 1px solid @border-color;
+    border-radius: @border-radius-base;
+    position: relative;
+    background-color: #fff;
+    filter: drop-shadow(@shadow);
+    &::before,&::after{
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 10px 0 10px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    &::before {
+        bottom: -10px;
+        border-color: #fff transparent transparent transparent;
+        z-index: 2;
+    }
+    &::after {
+      border-color: transparent transparent @border-color transparent;
+      bottom: -11px;
+      z-index: 1;
+    }
+}

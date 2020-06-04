@@ -1,3 +1,5 @@
+import CONFIG from '../config';//配置文件
+
 /**
  * @description 自动读取文件并生成结果
  * @param {Object} ctx 上下文对象 
@@ -34,7 +36,8 @@ const DIRS = handleAutoCreate(DIRECTS);
 import myFuns from './functions.js';
 import '../instance/toast';
 import '../instance/modal';
-import '../api';
+import '../instance/message';
+import APIS from '../api';
 
 /**
  * @description 引入事件监听者
@@ -43,8 +46,8 @@ import listener from './listener';
 
 /**
  * @description 插件安装器
- * @param Vue 
- * @param opt 
+ * @param Vue vue
+ * @param opt 参数配置
  */
 const install = function(Vue,opt={}){
   // 如果安装了，就无需安装
@@ -52,6 +55,9 @@ const install = function(Vue,opt={}){
   // ======设置所有vue全局方法========
     Vue.prototype.$funs = myFuns;//functions的简写
     Vue.prototype.$listener = listener;//事件触发监听器
+    if(CONFIG.apiAutoInsert){
+      Vue.prototype.$api = APIS;//事件触发监听器
+    }
 
   // =======设置所有指令==========
     for(let d in DIRS){

@@ -103,14 +103,14 @@
 }
 .create-flex-pixel(5);
 
-// 溢出隐藏
-.ellipsis{
+// 单行溢出隐藏，注意在使用时要加宽度
+.single-ellipsis{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-// 自动生成换行省略
+// 多行自动生成换行省略
 .create-clamp(@clamp) when (@clamp<5){
     .clamp-@{clamp}{
         overflow          : hidden;

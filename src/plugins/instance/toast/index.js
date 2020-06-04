@@ -2,7 +2,7 @@
 import Vue from 'vue';
 
 // 具体的组件
-import Toast from './toast.vue';
+import Toast from './Toast.vue';
 Toast.newInstance = properties => {
     const props = properties || {};
 	// 实例化一个组件，然后挂载到body上

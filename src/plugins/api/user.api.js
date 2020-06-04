@@ -1,27 +1,38 @@
 // 引入全局请求方法
-import {joinParams,COM_SERVICE} from './request';
-const {get,post} = COM_SERVICE;
+import {urlHandler} from './urlHandler';
 
-//登录
-export const login = async function(params){
-  let data = {},err = '';
-  try{
-    data = await post('/auth/login',params,'auth')
-  }catch(e){
-    err = e
-  }
-  return {err:err,data:data}
-}
+const urls = [
+  { 
+    name: 'login', //函数名称
+    url: '/auth/login', //请求地址
+    method:'post',
+    gateway: 'auth', //请求网关服务
+    way: 'post', //请求处理方式，post为实体方式，get为序列化方式,
+    tip:false
+  },
+  { 
+    name: 'getOrder', 
+    url: '/out/order/page', 
+    method: 'get',
+    gateway: 'auth',
+    way: 'get',
+  },
+  { 
+    name: 'updateOrder', 
+    url: '/out/order/update', 
+    method: 'put', 
+    gateway: 'auth',
+    way: 'post' 
+  },
+  { 
+    name: 'deleteOrder', 
+    url:({id})=>{
+      return '/out/order/delete/'+id
+    }, 
+    method: 'delete', 
+    gateway: 'auth',
+    way: 'get' 
+  },
+]
 
-//注册
-export const registe = async function(params){
-  let data = {},err = '';
-  try{
-    data = await post('/out/customer/register',params,'auth')
-  }catch(e){
-    err = e
-  }
-  return {err:err,data:data}
-}
-
-
+export default urlHandler(urls);
