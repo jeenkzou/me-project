@@ -6,7 +6,7 @@ function setDefaultByEnv(){
     let errorAutoTip = false;//请求接口报错时，自动提示错误信息,一般用于测试，或者某些接口需要提示给用户
     switch (process.env.NODE_ENV) {
         case 'development':
-            baseUrl = "http://service.cicba.cn";  //这里是本地的请求url
+            baseUrl = "http://localhost";  //这里是本地的请求url
             errorAutoTip = true;
             break;
         case 'alpha':   // 注意这里的名字要和设置的模式名字对应起来
@@ -14,7 +14,7 @@ function setDefaultByEnv(){
             errorAutoTip = true;
             break;
         case 'production':
-            baseUrl = "http://service.cicba.cn";  //生产环境url
+            baseUrl = "http://www.baidu.com";  //生产环境url
             errorAutoTip = false;
             break;
     }

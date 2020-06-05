@@ -8,7 +8,6 @@ const urls = [
     method:'post',
     gateway: 'auth', //请求网关服务
     way: 'post', //请求处理方式，post为实体方式，get为序列化方式,
-    tip:false
   },
   { 
     name: 'getOrder', 

@@ -17,7 +17,7 @@ export default {
       switch (method) {
         case "get": {
           // 按需引入方式，async await方式
-          const {err,data} = await userApi.getOrder({ id: 1 });
+          const {err,data} = await userApi.getOrder({ page:1,rows:10 });
           if(!err){
             console.log(data)
           }
@@ -25,7 +25,7 @@ export default {
         }
         case "post": {
           //promise方式
-          userApi.login({account:'17725003536',password: "123456",kaptcha:'de56' })
+          userApi.login({account:'test',password: "123456",kaptcha:'de56' })
             .then(({err,data})=>{
               if(err) throw err;
               console.log(data);

@@ -56,7 +56,7 @@ export default {
     //是否延迟
     'timeout':{
       type:Boolean,
-      default:true
+      default:false
     }
   },
   watch:{
