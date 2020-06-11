@@ -2,7 +2,8 @@ import axios from 'axios';
 import showMessage from '../instance/message';
 import { getToken, setToken, getRefToken, setRefToken } from '../utils/localStorage.js';
 import { timeOut, baseUrl, errorAutoTip } from '../config';
-import { stringifyObj, isObject, asyncCapture } from '../utils/functions';
+import { stringifyObj, asyncCapture } from '../utils/fun-tools/functions';
+import { isObject, isZh } from '../utils/fun-tools/boolean';
 import router from '@/router';
 import store from '@/store';
 
@@ -24,9 +25,9 @@ const statusMap = {
 axios.defaults.headers = { 'Content-Type': 'application/json;charset=utf-8' };//配置默认请求头为json格式
 axios.defaults.timeout = timeOut;//配置默认的超时时间
 
-router.beforeEach((from,to,next)=>{
+router.beforeEach((from, to, next) => {
   let item;
-  for(item in promiseMap){
+  for (item in promiseMap) {
     promiseMap[item]();
   }
   next();
@@ -143,7 +144,7 @@ export function handleCatchError(obj, tip) {
 function request(options) {
   let _url = options.url;
   //防止重复请求
-  if(_url in promiseMap){
+  if (_url in promiseMap) {
     promiseMap[_url]();
   }
   let defaultOptions = {

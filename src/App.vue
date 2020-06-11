@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-   <p class='text-a-c'>
-      <img alt="logo" src="@/assets/logo.png">
-    </p>
     <router-view />
-    <p class='text-a-c'>
-      <img alt="logo" src="@/assets/logo.png">
-    </p>
     <to-top></to-top>
   </div>
 </template>

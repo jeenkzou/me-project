@@ -2,7 +2,8 @@
  * @param {Object}  binding = {trigger//拖动的元素，body//设置样式的元素,recover//是否更新的时候恢复到原来的位置}
  * @description 拖动--主要适用于遮罩层
 */
-import { on,handleDrag,recoverTransform } from '../functions';
+import {handleDrag,recoverTransform} from '../fun-tools/drag';
+import { on } from '../fun-tools/functions';
 export default {
   name:'drag',
   inserted: (el, binding) => {

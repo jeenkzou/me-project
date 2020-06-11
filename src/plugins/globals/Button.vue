@@ -63,14 +63,18 @@ export default {
     loading:{
       handler:function(n,o){
         if(!n){
-          clearTimeout(this.clickTimer)
+          clearTimeout(this.clickTimer);
           this.clicked = false
-          clearTimeout(this.loadingTimer)
-          this.loadingShow = false
+          clearTimeout(this.loadingTimer);
+          this.loadingShow = false;
         }else{
-          this.loadingTimer =setTimeout(() => {
-            this.loadingShow = true
-          }, 1000);
+          if(this.timeout){
+            this.loadingTimer =setTimeout(() => {
+              this.loadingShow = true;
+            }, 1000);
+          }else{
+            this.loadingShow = true;
+          }
         }
       }
     }
@@ -85,12 +89,12 @@ export default {
   },
   methods: {
      buttonClick(e){
-      if(this.clicked || this.disabled) return
-      this.$emit('click',e)
+      if(this.clicked || this.disabled) return;
+      this.$emit('click',e);
       if(this.isTimeout){
-        this.clicked = true
+        this.clicked = true;
         this.clickTimer = setTimeout(()=>{
-          this.clicked = false
+          this.clicked = false;
         },this.duration*1000)
       }
      }

@@ -34,7 +34,8 @@
 </template>
 
 <script>
-import {handleDrag,recoverTransform,isZh,isObject,getType} from '../../utils/functions';
+  import {handleDrag,recoverTransform} from '../../utils/fun-tools/drag.js';
+import {isZh,isObject,isFunction,isString,isArray} from '../../utils/fun-tools/boolean';
 export default {
   data(){
     return {
@@ -80,14 +81,14 @@ export default {
       this.cancelBtnName = cancelBtnName || '取消';
       this.dragtitle = isZh()?'点击进行拖动':'Drag and Move';
       this.show = true;
-      if(getType(messages)==='string'){
+      if(isString(messages)){
         this.messages = [messages]
-      }else if(getType(messages)==='array'){
+      }else if(isArray(messages)){
         this.messages = messages
       }
       this.middle = this.messages.length<=1
       this.type = type
-      if(getType(callback)==='function'){
+      if(isFunction(callback)){
         this.callback = callback
       }else{
         this.callback = null

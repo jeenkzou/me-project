@@ -1,0 +1,33 @@
+.main-left{
+  position: fixed;
+  top:80px;
+  left:0;
+  width:80px;
+  height:100%;
+  background:#EDEDED;
+  text-align: center;
+  box-shadow:4px 3px 3px rgba(0,0,0,0.28);
+  li{
+    margin:20px 0;
+    padding-bottom:5px;
+    &.active,&:hover{
+      background:rgba(88,136,224,.4);
+      .meiconfont{
+        color:@color-primary;
+      }
+    }
+  }
+  .meiconfont{
+    font-size:30px;
+    margin:16px 0;
+  }
+}
+
+.main-right{
+  position: fixed;
+  left:80px;
+  top:80px;
+  width:100%;
+  height:100%;
+  overflow-y: auto;
+}
